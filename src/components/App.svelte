@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { getFromStorage, removeFromStorage, saveToStorage } from '../services/storage';
 
 	const ENTER_KEY = 'Enter';
 	const ESCAPE_KEY = 'Escape';
@@ -10,7 +11,9 @@
 	if (browser) {
 		// grab data from local storage
 		try {
-			items = JSON.parse(globalThis.localStorage.getItem('todos-svelte') ?? '') || [];
+			const savedItems = getFromStorage('todos');
+			if (!Array.isArray(savedItems)) removeFromStorage('todos');
+			items = savedItems || [];
 		} catch (err) {
 			items = [];
 		}
@@ -103,7 +106,7 @@
 
 	// save data to local storage
 	$: try {
-		if (browser) globalThis.localStorage.setItem('todos', JSON.stringify(items));
+		if (browser) saveToStorage('todos', items);
 	} catch (err) {
 		console.error(err);
 	}
