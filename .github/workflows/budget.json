@@ -1,0 +1,36 @@
+[
+	{
+		"path": "/*",
+		"firstPartyHostnames": ["*.todomvc.pages.dev"],
+		"timings": [
+			{
+				"metric": "speed-index",
+				"budget": 3000
+			},
+			{
+				"metric": "interactive",
+				"budget": 2000
+			},
+			{
+				"metric": "first-meaningful-paint",
+				"budget": 1300
+			}
+		],
+		"resourceSizes": [
+			{
+				"resourceType": "script",
+				"budget": 125
+			},
+			{
+				"resourceType": "total",
+				"budget": 500
+			}
+		],
+		"resourceCounts": [
+			{
+				"resourceType": "total",
+				"budget": 50
+			}
+		]
+	}
+]
